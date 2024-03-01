@@ -1,8 +1,8 @@
 # LVM Data Pull
 
 - [introduction](#introduction)
-- [new_sheet explanation](#new_sheet_explanation)
-- [update_admin explanation](#update_admin_explanation)
+- [new_sheet explanation](#new_sheet)
+- [update_admin explanation](#update_admin)
 
 ## Introduction
 The idea for this project came when I received an email to fill out a survey on how the session with my student went. Several questions were being used to document how time was being spent with my student and 
@@ -17,11 +17,11 @@ keeping the reporting process quick was very important. Another focus was to aut
 
 Once I finished the spreadsheet, I took the project a step further by moving the data to PowerBI to create a dashboard for all students. 
 
-## New_sheet explanation
+## New_sheet
 The point of this script was to simplify the template creation process for the administrator when a new student joins the program. Instead of having to copy and paste a sheet for each new student, 
 I created a button using the onOpen() function. Then I tied the functionality of the button to the applyTemplate() function that copies the format from a dummy sheet called 'New Student Template' to a new sheet. 
 
-## Update_admin explanation
+## Update_admin
 The point of this script was to automate the calculation of their KPIs such as total hours spent working with the student this month and total hours spent working with the student this year. 
 I haven't been able to find a way to automate the process of identifying the startrow, date column and hours columns so I set those at variables in the beginning. I run the calculation by sheet and use cell A2 to pull the student's name.
 I loop through the hours column and update monthlyHours and yearlyHours in the admin sheet based on the date of the visit. I use today's date as reference to whether or not the hours should fall under the bucket of current month or current year.
