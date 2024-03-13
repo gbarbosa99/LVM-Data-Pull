@@ -1,35 +1,61 @@
 # LVM Data Pull
 
-- [introduction](#introduction)
-- [new_sheet explanation](#new_sheet)
-- [update_admin explanation](#update_admin)
+<!---Table of Contents--->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About the Project</a>
+      <ul>
+        <li><a href="#built_with">Built with</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-## Introduction
+<!---About the Project--->
+## About the Project
+
 The idea for this project came when I received an email to fill out a survey on how the session with my student went. Several questions were being used to document how time was being spent with my student and 
 what topics we were focusing on. I realized this was a good tool for the administrator to track how the students were doing, but not very useful for the tutors, especially because they don't have access to the spreadsheet 
 housing all of the survey entries.
 
-Having worked as a tutor for a few months, I had been tracking all of the information in a spreadsheet and copying the information over to the survey at the end of the month. This gave me the idea of automating the collection 
-process for the administrator and the students, removing redundancies and facilitiating the process for all users involved. 
+Having worked as a tutor for a few months, I had been tracking all of the information in my own spreadsheet and copying the information over to the survey at the end of the month. This gave me the idea of automating the collection process for the administrator and the students, removing redundancies and facilitiating the process for all users involved. 
 
-While building, the main focus was to keep things simple and straightforward. The tutoring is already a big time commitment, so 
-keeping the reporting process quick was very important. Another focus was to automate as many aspects of their workflow as possible, even the small things.
+While building, I was told to prioritize making everything straightforward. With tutoring already being a big time commitment for the volunteers, we didn't want tracking these metrics to significantly affect this.
 
 Once I finished the spreadsheet, I took the project a step further by moving the data to PowerBI to create a dashboard for all students. 
 
-## New_sheet
-The point of this script was to simplify the template creation process for the administrator when a new student joins the program. Instead of having to copy and paste a sheet for each new student, 
-I created a button using the onOpen() function. Then I tied the functionality of the button to the applyTemplate() function that copies the format from a dummy sheet called 'New Student Template' to a new sheet. 
+<p align='right'>(<a href="#readme-op">back to top</a>)</p>
 
-## Update_admin
-The point of this script was to automate the calculation of their KPIs such as total hours spent working with the student this month and total hours spent working with the student this year. 
-I haven't been able to find a way to automate the process of identifying the startrow, date column and hours columns so I set those at variables in the beginning. I run the calculation by sheet and use cell A2 to pull the student's name.
-I loop through the hours column and update monthlyHours and yearlyHours in the admin sheet based on the date of the visit. I use today's date as reference to whether or not the hours should fall under the bucket of current month or current year.
+<!---Built With--->
+### Built With
+* [Apps Script][apps-script-url]
 
-I set this to run whenever an update was made to any sheet. One drawback to the script is that the program doesn't identify where it should be pulling data from, so any changes made to the format of the sheet would prevent my script from working.
-One step I took to prevent this was to lock the cells of the sheet containing the headers to prevent people from moving things around. I'd like to automate the process of identifying where the data begins and will continue to work on this going forward. 
+<p align='right'>(<a href="#readme-top">back to top</a>)</p>
+
+<!---Usage--->
+### Usage
+
+![image](https://github.com/gbarbosa99/LVM-Data-Pull/assets/99455542/8dbede4d-978b-4c20-8d13-1c9265e6ce3f)
+
+![image](https://github.com/gbarbosa99/LVM-Data-Pull/assets/99455542/1337be8b-a8cf-45a7-a074-ceda50465691)
+
+The first image above is the new student sheet template that we apply to new student sheets. The second image are the cells in the admin sheet that the student information populates into. The student name in the second image fills in from cell A2 in the student template sheet. The hours spent with the student this month and this year are all calculated using the "Date" and "In-Person Hours" columns from the student template. The system uses the current date to determine whether to increment "Total Hours this Month" and "Total Hours this Year" in the admin sheet. 
+
+![image](https://github.com/gbarbosa99/LVM-Data-Pull/assets/99455542/16c80f29-9c7d-4937-9751-d9c7022b1f32)
+
+A new sheet is created using the "Add New Student" button. 
+
+<p align='right'>(<a href="#readme-top">back to top</a>)</p>
 
 
 The next steps for this project are to:
 - automate the data retrieval from Sheets to PowerBI to update the dashboard as information is put into Sheets and to create a dashboard as soon as a new sheet is created with the format I specify. 
 - Create a chatbot to be used alongside the dashboard that uses a LLM to assist students with any questions they have.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[apps-script-url]: https://developers.google.com/apps-script/api/reference/rest
+[apps-script.js]: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_Apps_Script.svg/1200px-Google_Apps_Script.svg.png
